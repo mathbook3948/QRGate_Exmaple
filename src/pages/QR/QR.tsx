@@ -4,10 +4,10 @@ import axios from "axios";
 import QRCode from "qrcode";
 import WebsocketManager from "../../utils/WebsocketManager.ts";
 
-const main_url = "qrgate.xyz"
-const client_url = "qrgate.pages.dev"
-const BASE_URL = "http://"+main_url+":8000/api";
-const CURRENT_URL = client_url
+const main_url = "qrgate.xyz";
+const client_url = "qrgate.pages.dev";
+const BASE_URL = "http://" + main_url + "/api";
+const CURRENT_URL = client_url;
 
 const QR: React.FC = () => {
     const [isClicked, setIsClicked] = useState(false);
@@ -51,7 +51,7 @@ const QR: React.FC = () => {
 
             wsManager.connect();
             wsManager.onMessage((message) => {
-                console.log(message)
+                console.log(message);
                 if (message === "success") {
                     alert("로그인 완료");
                     wsManager.disconnect();
@@ -78,35 +78,58 @@ const QR: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-purple-300 via-blue-200 to-pink-300">
-            {isClicked ? (
-                <div className="flex flex-col justify-center items-center min-h-[80vh]">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-6">QR 스캔 후 로그인을 완료 해주세요</h1>
-                    {qrCodeBase64 ? (
-                        <>
-                            <img src={qrCodeBase64} alt="QR Code" className="w-64 h-64 object-contain border-4 border-gray-300 rounded-lg shadow-md"/>
-                            <div className="w-16 h-16 mt-5 mb-5 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                            <p>로그인 완료 대기 중입니다...</p>
-                            <p className="text-red-500 mt-4">남은 시간: {formatTime(timer)}</p>
-                        </>
-                    ) : (
-                        <>
-                            <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                            <p>QR 코드를 생성 중입니다...</p>
-                        </>
-                    )}
-                </div>
-            ) : (
-                <div className="flex flex-col justify-center items-center min-h-[80vh]">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-6">QR 접수 페이지</h1>
-                    <button
-                        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer"
-                        onClick={() => setIsClicked(true)}
-                    >
-                        접수 시작하기
-                    </button>
-                </div>
-            )}
+        <div className="min-h-screen flex flex-col bg-gradient-to-r from-purple-300 via-blue-200 to-pink-300">
+            {/* 메인 콘텐츠 영역 */}
+            <div className="flex-grow flex justify-center items-center">
+                {isClicked ? (
+                    <div className="flex flex-col justify-center items-center min-h-[80vh]">
+                        <h1 className="text-3xl font-bold text-gray-800 mb-6">
+                            QR 스캔 후 로그인을 완료 해주세요
+                        </h1>
+                        {qrCodeBase64 ? (
+                            <>
+                                <img
+                                    src={qrCodeBase64}
+                                    alt="QR Code"
+                                    className="w-64 h-64 object-contain border-4 border-gray-300 rounded-lg shadow-md"
+                                />
+                                <div className="w-16 h-16 mt-5 mb-5 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                                <p>로그인 완료 대기 중입니다...</p>
+                                <p className="text-red-500 mt-4">남은 시간: {formatTime(timer)}</p>
+                            </>
+                        ) : (
+                            <>
+                                <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                                <p>QR 코드를 생성 중입니다...</p>
+                            </>
+                        )}
+                    </div>
+                ) : (
+                    <div className="flex flex-col justify-center items-center min-h-[80vh]">
+                        <h1 className="text-3xl font-bold text-gray-800 mb-6">
+                            QR 접수 페이지
+                        </h1>
+                        <button
+                            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer"
+                            onClick={() => setIsClicked(true)}
+                        >
+                            접수 시작하기
+                        </button>
+                    </div>
+                )}
+            </div>
+
+            {/* GitHub 링크 영역 */}
+            <footer className="p-4 text-center">
+                <a
+                    href="https://github.com/your_username/QRGate" // 본인의 저장소 URL로 변경하세요.
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                >
+                    GitHub - QRGate
+                </a>
+            </footer>
         </div>
     );
 };
