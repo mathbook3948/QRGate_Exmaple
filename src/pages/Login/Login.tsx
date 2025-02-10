@@ -9,7 +9,7 @@ const useQuery = () => {
 
 const main_url = "qrgate.xyz"
 const client_url = "qrgate.pages.dev"
-const BASE_URL = "http://"+main_url+"/api";
+const BASE_URL = "https://"+main_url+"/api";
 // @ts-ignore
 const CURRENT_URL = client_url
 
