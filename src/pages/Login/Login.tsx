@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useLocation } from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -19,6 +19,7 @@ const Login: React.FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isSuccess, setIsSuccess] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();  // 폼 기본 제출 방지
@@ -77,7 +78,7 @@ const Login: React.FC = () => {
                         </form>
 
                         <p className="mt-6 text-sm text-gray-600">
-                            계정이 없으신가요? <a href="#" className="text-blue-500 hover:underline">회원가입</a>
+                            계정이 없으신가요? <Link to="/signup" className="text-blue-600 hover:underline">회원가입</Link>
                         </p>
                     </>
                 ) : (
