@@ -5,7 +5,7 @@ import QRCode from "qrcode";
 import WebsocketManager from "../../utils/WebsocketManager.ts";
 
 const main_url = "qrgate.xyz";
-const client_url = "qrgate.pages.dev";
+const client_url = "https://qrgate-six.vercel.app/";
 const BASE_URL = "https://" + main_url + "/api";
 const CURRENT_URL = client_url;
 
