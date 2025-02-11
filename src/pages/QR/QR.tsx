@@ -122,7 +122,7 @@ const QR: React.FC = () => {
             {/* GitHub 링크 영역 */}
             <footer className="p-4 text-center">
                 <a
-                    href="https://github.com/your_username/QRGate" // 본인의 저장소 URL로 변경하세요.
+                    href="https://github.com/mathbook3948/QRGate"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 hover:underline"
